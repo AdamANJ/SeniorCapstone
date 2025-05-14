@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AI Summer Camp</title>
+	<link rel="stylesheet" href="{% static 'styles.css' %}">
+	<nav class="navbar">
+		<ul>
+			<li><a href="{% url 'home' %}">Home</a></li>
+	        <li><a href="{% url 'speakers' %}">Speakers</a></li>
+	    </ul>
+	</nav>
+
+</head>
+
+<body style="background-color: #f2f2f2;">
+
+	{% for image in image %}
+
+		{% include 'personal/snippets/imageContainer.html' with value=text %}
+
+	{% endfor %}
+
+	{% for text in text %}
+		
+		{% include 'personal/snippets/textContainer.html' with value=text %}
+		
+	{% endfor %}
+
+	<div class="homeSpeak">
+		<h3>Highlighted Speakers</h3>
+		
+		<div class="layout" style="margin-bottom: 30px;">
+			{% for speaker in speaker %}
+
+				{% include 'personal/snippets/homeSpeakers.html' with value=speaker %}
+
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="homeSpeak">
+		<h3>Events</h3>
+		
+		<div class="layout" style="margin-bottom: 30px;">
+			{% for event in events %}
+
+				{% include 'personal/snippets/events.html' with value=event %}
+
+			{% endfor %}
+		</div>
+	</div>
+
+</body>
+
+</html>

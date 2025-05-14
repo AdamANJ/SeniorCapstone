@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AI Summer Camp</title>
+	<link rel="stylesheet" href="{% static 'styles.css' %}">
+	<nav class="navbar">
+		<ul>
+			<li><a href="{% url 'home' %}">Home</a></li>
+	        <li><a href="{% url 'speakers' %}">Speakers</a></li>
+	    </ul>
+	</nav>
+
+</head>
+
+<body>
+	
+<h2>Register</h2>
+<form method="post"> {% csrf_token %}
+	{% for field in registration_form %}
+		<p>
+			{{field.label_tag}}
+			{{field}}
+
+			{% if field.help_text %}
+				<small style="color:gray;">{{field.help_text}}</small>
+			{% endif %}
+
+			{% for error in field.errors %}
+				<p style="color: red;">{{error}}</p>
+			{% endfor %}
+		</p>	
+	{% endfor %}
+
+	<button type="submit">Register</button>
+</form>
+
+</body>
+
+<footer>
+	<!-- <h3>This is the footer</h3> -->
+</footer>
+</html>

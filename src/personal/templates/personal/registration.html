@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AI Summer Camp</title>
+	<link rel="stylesheet" href="{% static 'styles.css' %}">
+	<nav class="navbar">
+		<ul>
+			<li><a href="{% url 'home' %}">Home</a></li>
+	        <li><a href="{% url 'speakers' %}">Speakers</a></li>
+	    </ul>
+	</nav>
+</head>
+
+<style type="text/css">
+
+.con {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+	
+.register {
+	background: white;
+	box-shadow: 0 5px 5px 0 rgba(0,0,0,.2);
+	border-radius: 10px;
+	padding: 10px;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	max-width: 500px;
+	width: 100%;
+}
+form {
+	text-align: center;
+}
+form p {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 15px;
+}
+form label {
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+form input {
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 1em;
+}
+form button {
+	margin-top: 10px;
+	padding: 5px 10px;
+	background: #4CBB17;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	width: 75px;
+	align-self: center;
+}
+
+</style>
+
+<body style="background-color:#f2f2f2;">
+	
+<div class="con">
+	<div class="register">
+	<form method="post">
+		{% csrf_token %}
+		<p>{{form.first_name.label_tag}} {{form.first_name}}</p>
+		<p>{{form.last_name.label_tag}} {{form.last_name}}</p>
+		<p>{{form.phone.label_tag}} {{form.phone}}</p>
+		<p>{{form.email.label_tag}} {{form.email}}</p>
+		<p>{{form.parent_email.label_tag}} {{form.parent_email}}</p>
+	
+		<button type="submit">Register</button>
+	</form>
+	</div>
+</div>
+
+</body>
+
+</html>

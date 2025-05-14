@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AI Summer Camp</title>
+	<link rel="stylesheet" href="{% static 'styles.css' %}">
+	<nav class="navbar">
+		<ul>
+			<li><a href="{% url 'home' %}">Home</a></li>
+	        <li><a href="{% url 'speakers' %}">Speakers</a></li>
+	    </ul>
+	</nav>
+	<style type="text/css">
+		.success {
+		    background: white;
+		    box-shadow: 0 5px 5px 0 rgba(0,0,0,.2);
+		    border-radius: 10px;
+		    padding: 50px;
+			margin-right: auto;
+			margin-left: auto;
+			margin-top: 100px;
+		    max-width: 50%;
+		    text-align: center;
+		    font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	
+	<div class="success">
+	You are registered for our Summer Camp
+	</div>
+
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<style type="text/css">
+
+.event {
+	background: #f2f2f2;
+	box-shadow: 0 5px 5px 0 rgba(0,0,0,.2);
+	border-radius: 10px;
+	width: 220px;
+	min-height: 150px;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	cursor: pointer;
+}
+
+.textinBox {
+	text-align: center;
+}
+.textinbox h1 {
+	text-align: center;
+	margin-bottom: 5px;
+	padding: 5px;
+	font-size: 18px;
+}
+.textinbox p {
+	text-align: center;
+	font-size: 15px;
+	padding: 5px;
+}
+.modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.6);
+	justify-content: center;
+	align-items: center;
+}
+
+.modal-content {
+	background: #fff;
+	padding: 20px;
+	border-radius: 8px;
+	max-width: 700px;
+	width: 90%;
+	min-height: 300px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.modal-content p {
+	white-space: pre-wrap;
+	padding: 5px;
+}
+.close-btn {
+	margin-top: 10px;
+	padding: 5px 10px;
+	background: #4CBB17;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	width: 50px;
+	align-self: center;
+}
+
+</style>
+
+
+<div class="event" 
+	data-name="{{event.name}}" 
+	data-time="{{event.time}}" 
+	data-info="{{event.info}}" 
+	onclick="openModal(this)">
+	
+	<div class="textinbox">
+		<h1>{{event.time}}</h1>
+		<p>{{event.name}}</p>
+	</div>
+</div>
+
+<div class="modal" id="eventModal">
+	<div class="modal-content">
+  		<div>
+			<h3 id="modalName"></h3>
+			<p id="modalTime" style="align-self: center;"></p>
+			<p id="modalInfo"></p>
+		</div>
+
+	<button class="close-btn" onclick="closeModal()">Close</button>
+	
+	</div>
+</div>
+
+<script>
+function openModal(element) {
+	const name = element.getAttribute('data-name');
+	const time = element.getAttribute('data-time');
+	const info = element.getAttribute('data-info');
+
+	document.getElementById('modalName').innerText = name;
+	document.getElementById('modalTime').innerText = time;
+	document.getElementById('modalInfo').innerText = info;
+	
+	document.getElementById('eventModal').style.display = 'flex';
+}
+
+function closeModal() {
+	document.getElementById('eventModal').style.display = 'none';
+}
+</script>

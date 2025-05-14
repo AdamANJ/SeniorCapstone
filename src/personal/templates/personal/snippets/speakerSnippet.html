@@ -1,0 +1,151 @@
+<style type="text/css">
+
+.box {
+	background: white;
+	box-shadow: 0 5px 5px 0 rgba(0,0,0,.2);
+	border-radius: 10px;
+	width: 220px;
+	height: 220px;
+	cursor: pointer;
+}
+.textBox {
+	text-align: center;
+	justify-content: center;
+}
+.textBox img {
+	display: block;
+	margin: auto;
+	margin-top: 10px;
+	max-width: 100px;
+	height: 100px;
+	padding: 10px;
+}
+.textBox h1 {
+	text-align: center;
+	margin-top: 10px;
+	font-size: 18px;
+}
+.textBox p {
+	text-align: center;
+	font-size: 12px;
+}
+.pop {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.6);
+	justify-content: center;
+	align-items: center;
+}
+.pop-content {
+	background: #fff;
+	padding: 20px;
+	border-radius: 8px;
+	max-width: 700px;
+	width: 90%;
+	min-height: 300px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.pop-content p {
+	white-space: pre-wrap;
+	padding: 5px;
+}
+.profile {
+	display: flex;
+	flex-direction: row;
+	align-items: end;
+	gap: 20px;
+	margin-bottom: 20px;
+}
+.profile img {
+	max-width: 150px;
+	height: 150px;
+	border-radius: 8px;
+	object-fit: cover;
+}
+.proText {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	width: 100%;
+	align-items: flex-start;
+}
+.proText h3 {
+	margin: 0;
+	font-size: 20px;
+}
+.proText p {
+	margin: 5px 0 0 0;
+	font-size: 14px;
+}
+
+.closeButton {
+	margin-top: 10px;
+	padding: 5px 10px;
+	background: #4CBB17;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	width: 50px;
+	align-self: center;
+}
+
+</style>
+
+<div class="box"
+	 data-image="{{speaker.image.url}}"
+	 data-first_name="{{speaker.first_name}}"
+	 data-last_name="{{speaker.last_name}}"
+	 data-specialty="{{speaker.specialty}}"
+	 data-bio="{{speaker.bio}}"
+	 onclick="popOpen(this)">
+
+	<div class="textBox">
+		<img src="{{ speaker.image.url }}">
+		<h1>{{speaker.first_name}} {{speaker.last_name}}</h1>
+		<p>{{speaker.specialty}}</p>
+	</div>
+</div>
+
+<div class="pop" id="myModal">
+	<div class="pop-content">
+
+		<div class="profile">	
+			<img id="img">
+			
+			<div class="proText">
+				<h3 id="name"></h3>
+				<p id="title"></p>
+			</div>
+		</div>
+
+		<p id="bio"></p>
+		<button class="closeButton" onclick="popClose()">Close</button>
+	</div>
+</div>
+
+<script>
+function popOpen(element) {
+	const image 	= element.getAttribute('data-image');
+	const first_name= element.getAttribute('data-first_name');
+	const last_name = element.getAttribute('data-last_name');
+	const specialty = element.getAttribute('data-specialty');
+	const bio 		= element.getAttribute('data-bio');
+
+	document.getElementById('img').src = image;
+	document.getElementById('name').innerText = first_name + ' ' + last_name;
+	document.getElementById('title').innerText = specialty;
+	document.getElementById('bio').innerText = bio;
+
+	document.getElementById('myModal').style.display = 'flex';
+}
+
+function popClose() {
+	document.getElementById('myModal').style.display = 'none';
+}
+</script>
