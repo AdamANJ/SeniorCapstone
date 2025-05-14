@@ -1,3 +1,8 @@
+What I have in my repo is only the src of the Django Project I made. It has all of the code that I made, and some generated when making the project.
+
+
+
+For Submission of Senior Capstone Class:
 Instruction on how to run Django Project on your local computer:
 
 Requirements:
